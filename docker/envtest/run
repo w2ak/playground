@@ -1,0 +1,6 @@
+#!/bin/bash -v
+NAME=envtest TAG=playground
+docker images $NAME:$TAG | grep '^envtest' || $(readlink -f $(dirname $0))/build
+docker run --rm                         --name $NAME $NAME:$TAG
+docker run --rm -e VAR=test             --name $NAME $NAME:$TAG
+docker run --rm -e VAR=test -e FOO=blah --name $NAME $NAME:$TAG

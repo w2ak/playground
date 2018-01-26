@@ -1,0 +1,3 @@
+#!/bin/bash -v
+NAME=envtest TAG=playground
+docker build -t $NAME:$TAG $(readlink -f $(dirname $0))
